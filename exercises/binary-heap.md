@@ -40,3 +40,35 @@ Use the following steps to design the test suite:
 Use the project in [tp3-heap](../code/tp3-heap) to complete this exercise.
 
 ## Answer
+
+1. 
+
+Most method (pop,peek,count) does not take any argument for them the input will be the state of the Heap before each call to them. push() will take the state of the tree and it's input as inputs. 
+
+The state of the tree depends also on the kind of tree (it's comparator). Each method could behave differently depending on the Comparator pass to the BinaryHeap.
+
+pop() and peek() should throw when there is no elements in the Heap.
+
+count() and peek() are not dependant of the Comparator pass to the Heap Since they don't use the compartor at all.
+
+From **Input Space Partitioning** design, I would write the following test:
+- testCountWhenEmpty()
+- testCountWhenNonEmpty()
+- testPeekWhenEmpty()
+- testPeekWhenNonEmpty()
+- testPush() (Comparator.naturalOrder())
+- testPushReverse() (Comparator.reverseOrder())
+- testPopWhenEmpty()
+- testPopWhenNonEmpty()
+
+2. 
+
+Code Coverage is 100%
+
+3. 
+
+I have no predicate with more than one boolean check.
+
+4.
+
+
