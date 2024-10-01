@@ -2,16 +2,118 @@ package fr.istic.vv;
 
 class Date implements Comparable<Date> {
 
-    public Date(int day, int month, int year) { }
+    private int day;
+    private int month;
+    private int year;
 
-    public static boolean isValidDate(int day, int month, int year) { return false; }
+    private static final int[] daysInMonths = {
+            0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+    };
 
-    public static boolean isLeapYear(int year) { return false; }
+    public Date(int day, int month, int year) {
+        if (!isValidDate(day, month, year)) {
+            throw new IllegalArgumentException("Invalid date.");
+        }
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
 
-    public Date nextDate() { return null; }
+    public static boolean isValidDate(int day, int month, int year) {
+        // Valid Month
+        if (month < 1 ||
+                month > 12) {
+            return false;
+        }
 
-    public Date previousDate() { return null; }
+        // Valid Days
+        int daysInMonth = daysInMonth(month, year);
+        return day >= 1 &&
+                day <= daysInMonth;
+    }
 
-    public int compareTo(Date other) { return 0; }
+    public static boolean isLeapYear(int year) {
+        if (year % 4 == 0) {
+            if (year % 100 == 0) {
+                return year % 400 == 0;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public Date nextDate() {
+        int newDay = this.day;
+        int newMonth = this.month;
+        int newYear = this.year;
+
+        newDay++;
+        if (newDay > daysInMonth(newMonth, newYear)) {
+            newDay = 1;
+            newMonth++;
+            if (newMonth > 12) {
+                newMonth = 1;
+                newYear++;
+            }
+        }
+
+        return new Date(newDay, newMonth, newYear);
+    }
+
+    public Date previousDate() {
+        int prevDay = this.day;
+        int prevMonth = this.month;
+        int prevYear = this.year;
+
+        prevDay--;
+        if (prevDay < 1) {
+            prevMonth--;
+            if (prevMonth < 1) {
+                prevYear--;
+                prevMonth = 12;
+            }
+            prevDay = daysInMonth(prevMonth, prevYear);
+        }
+
+        return new Date(prevDay, prevMonth, prevYear);
+    }
+
+    // return +1 if this > other
+    // return -1 if this < other
+    // return 0 if this == other
+    public int compareTo(Date other) {
+        if (other == null) {
+            throw new NullPointerException();
+        }
+
+        if (this.getYear() != other.getYear()) {
+            return Integer.compare(this.getYear(), other.getYear());
+        }
+
+        if (this.getMonth() != other.getMonth()) {
+            return Integer.compare(this.getMonth(), other.getMonth());
+        }
+
+        return Integer.compare(this.getDay(), other.getDay());
+    }
+
+    public int getDay() {
+        return this.day;
+    }
+
+    public int getMonth() {
+        return this.month;
+    }
+
+    public int getYear() {
+        return this.year;
+    }
+
+    private static int daysInMonth(int month, int year) {
+        if (month == 2 && isLeapYear(year)) {
+            return 29;
+        }
+        return daysInMonths[month];
+    }
 
 }

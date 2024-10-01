@@ -53,3 +53,93 @@ Use the project in [tp3-date](../code/tp3-date) to complete this exercise.
 
 ## Answer
 
+**TODO** can we change the interface (add getters) ??
+
+**TODO** do we need to take care of negative year ??
+
+**TODO** Base Choice Coverage ??
+
+
+1. 
+
+## isValidDate(int day, int month, int year)
+Characteristics:
+    - Valid: 1-31 days based on the month and leap year consideration.
+    - Invalid: Out of range values for days, months, or years.
+Blocks:
+    - Valid dates:
+        - (31, 1, 2023) 
+        - (29, 2, 2020) // Leap year
+        - (1, 1, 0) 
+    - Invalid dates: 
+        - (32, 1, 10) 
+        - (31, 4, 2023) // April has only 30 day
+        - (29, 2, 2021) // Invalid for non-leap year
+        - (0, 1, 2023) // No 0 day 
+        - (1, 0, 2023) // No 0 month 
+
+## isLeapYear(int year)
+Characteristics:
+     Leap Year occurs each year that is a multiple of 4, except for years evenly divisible by 100 but not by 400. 
+    Leap Year / Non-Leap Year
+Blocks:
+    - Valid leap years:
+        - 2020
+        - 2000
+        - -4 ??
+    - Invalid leap years:
+        - 2021
+        - 1900
+
+## nextDate()
+Characteristics:
+    Need to be able to compare Date for test (cf `compareTo()`)
+Blocks:
+    - Transition from month-end to start month
+    - Transition from year-end to start year
+    - Transition during leap year in febuary
+    - Transition from BC to DC era.
+
+## previousDate()
+Characteristics:
+    Need to be able to compare Date for test
+Block:
+    Same as `nextDate()`
+
+## CompareTo()
+Characteristics:
+    ???
+Block:
+    - Same date
+    - previousDate vs current date
+    - nextDate vs current date
+
+# Common Characteristics
+
+A lots of method need to know how many days there is in a mouth depending on the month and the year. 
+
+2. 
+
+    Forgot to do test the method that could throw
+
+    Add test for:
+    - compareTo() (Throws)
+    - Date() (Throws)
+
+    Now 100% Code Coverage
+
+3.
+
+**TODO**
+
+4.
+
+90% killed
+
+Add test for:
+- getters
+- compareTo() (Date Not Equals)
+- NextDate() (Transition month 11 to 12)
+- PreviousDate() (Transition Day 2 to 1)
+
+100% killed
