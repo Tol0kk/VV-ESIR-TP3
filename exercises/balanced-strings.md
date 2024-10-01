@@ -26,3 +26,57 @@ Use the project in [tp3-balanced-strings](../code/tp3-balanced-strings) to compl
 
 ## Answer
 
+1. First question
+
+The input space partitionning is the set of strings of length greater or equal to 0, made of the characters '(', ')', '{', '}', '[', ']' and this set is infinite. There is two types of inputs, balanced, and unbalanced.
+
+We can create some tests with these informations, without looking at the structure of the programm. We will test :
+- "([{}])" a valid balanced string ;
+- "()[]{}" a valid balanced string ;
+- "({))" and an unbalanced string.
+
+With this tests, we had a branch coverage of 84%, and a code coverage of 86%. Let's add some tests to increase the coverage :
+
+2. Second question
+
+Here we used the fact that the algorithm use a stack to store the openning brackets. 
+
+- "", an edge case ;
+- "(", an other edge case ;
+- "()(())))", an unbalanced string that will empty the stack ;
+- "(((((())", and unbalanced string where the algorithm will end and the stack will not be empty.
+
+With these new tests, we have a code coverage of 94% and branch coverage of 96%. 
+
+3. Third question
+
+All the tests here reach all the logic of the algorithm. No need to add new tests. 
+
+
+4. Fourth question
+
+Using PIT, we found two mutations that survived the tests. All the others mutations where killed.
+
+In these lines of code, PIT replaced the modulo operation by a multiplication, causing the condition to be always false. 
+
+```java
+if (str.length() % 2 == 1) { // for efficiency
+    return false;
+}
+```
+
+This have no impact on the tests because this condition is only here for efficiency and does not impact the results of the method. 
+
+Then, we saw that the line 53 of the code was not covered. Let's add a test to fix that and improve the mutation test and run again PIT. 
+
+We added the following test for the cases where the paramater of the method is invalid.
+
+```java 
+@Test
+void testCase8() {
+    assertThrows(InvalidParameterException.class, () -> isBalanced("(xx)"));
+}
+```
+
+Now, we have a great mutation coverage of 17/18, knowing that the last mutation does not have to be taken in account. 
+
