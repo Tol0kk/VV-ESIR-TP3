@@ -1,0 +1,12 @@
+[submodule "project_codebase/commons-collections"]
+	path = project_codebase/commons-collections
+	url = https://github.com/apache/commons-collections
+[submodule "project_codebase/commons-cli"]
+	path = project_codebase/commons-cli
+	url = https://github.com/apache/commons-cli
+[submodule "project_codebase/commons-math"]
+	path = project_codebase/commons-math
+	url = https://github.com/apache/commons-math
+[submodule "project_codebase/commons-lang"]
+	path = project_codebase/commons-lang
+	url = https://github.com/apache/commons-lang
