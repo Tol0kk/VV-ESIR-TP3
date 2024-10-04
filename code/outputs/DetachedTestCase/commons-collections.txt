@@ -1,0 +1,17 @@
+commons-collections/src/test/java/org/apache/commons/collections4/IterableUtilsTest.java:71:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/IterableUtilsTest.java:78:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/bidimap/AbstractBidiMapTest.java:600:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/collection/AbstractCollectionTest.java:531:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/collection/AbstractCollectionTest.java:541:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/collection/AbstractCollectionTest.java:1363:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/functors/AbstractCompositePredicateTest.java:137:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/iterators/AbstractIteratorTest.java:182:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/map/AbstractMapTest.java:874:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/map/AbstractMapTest.java:883:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/map/AbstractMapTest.java:2446:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/map/AbstractMapTest.java:2453:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/map/AbstractMapTest.java:2465:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/map/AbstractMapTest.java:2477:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/map/AbstractMapTest.java:2492:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/multimap/AbstractMultiValuedMapTest.java:671:	DetachedTestCase:	Probable detached JUnit test case.
+commons-collections/src/test/java/org/apache/commons/collections4/multimap/AbstractMultiValuedMapTest.java:679:	DetachedTestCase:	Probable detached JUnit test case.
