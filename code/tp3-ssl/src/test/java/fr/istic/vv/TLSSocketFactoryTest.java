@@ -12,46 +12,55 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TLSSocketFactoryTest {
 
     /**
-     * Test when the edge case when the both supported and enabled protocols are null.
+     * Test when the edge case when the both supported and enabled protocols are
+     * null.
      */
     @Test
-    public void preparedSocket_NullProtocols()  {
+    public void preparedSocket_NullProtocols() {
         TLSSocketFactory f = new TLSSocketFactory();
-        f.prepareSocket(new SSLSocket() {
+        SSLSocket socket = new SSLSocket() {
 
+            @Override
             public String[] getSupportedProtocols() {
                 return null;
             }
 
+            @Override
             public String[] getEnabledProtocols() {
                 return null;
             }
 
+            @Override
             public void setEnabledProtocols(String[] protocols) {
                 fail();
             }
-        });
+        };
+        f.prepareSocket(socket);
     }
 
     @Test
-    public void typical()  {
+    public void typical() {
         TLSSocketFactory f = new TLSSocketFactory();
-        f.prepareSocket(new SSLSocket() {
+        String [] enabled = new String[]{}; 
+        SSLSocket socket = new SSLSocket() {
             @Override
             public String[] getSupportedProtocols() {
-                return shuffle(new String[]{"SSLv2Hello", "SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2"});
+                return shuffle(new String[] { "SSLv2Hello", "SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2" });
             }
+
             @Override
             public String[] getEnabledProtocols() {
-                return shuffle(new String[]{"SSLv3", "TLSv1"});
+                return shuffle(new String[] { "SSLv3", "TLSv1" });
             }
+
             @Override
             public void setEnabledProtocols(String[] protocols) {
-                assertTrue(Arrays.equals(protocols, new String[] {"TLSv1.2", "TLSv1.1", "TLSv1", "SSLv3" }));
+                assertTrue(
+                Arrays.equals(protocols, new String[] { "TLSv1.2", "TLSv1.1", "TLSv1", "SSLv3" }));
             }
-        });
+        };
+        f.prepareSocket(socket);
     }
-
 
     private String[] shuffle(String[] in) {
         List<String> list = new ArrayList<String>(Arrays.asList(in));

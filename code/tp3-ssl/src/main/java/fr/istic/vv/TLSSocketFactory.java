@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TLSSocketFactory {
-
-
     public void prepareSocket(SSLSocket socket) {
 
         String[] supported = socket.getSupportedProtocols();
@@ -39,7 +37,6 @@ public class TLSSocketFactory {
             String[] enabling = target.toArray(new String[target.size()]);
             socket.setEnabledProtocols(enabling);
         }
-
     }
 
     /**

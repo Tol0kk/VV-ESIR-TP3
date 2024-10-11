@@ -33,12 +33,13 @@ class BinaryHeap<T> {
             int left_child_idx = left_child(idx);
             int right_child_idx = right_child(idx);
             int smaller_child_idx = left_child_idx;
-            if (right_child_idx < heap.size() && comparator.compare(heap.get(left_child_idx), heap.get(right_child_idx)) > 0) {
+            if (right_child_idx < heap.size() &&
+                    comparator.compare(heap.get(left_child_idx), heap.get(right_child_idx)) > 0) {
                 smaller_child_idx = right_child_idx;
             }
 
             // Check if heap fixed (when last moved value is smaller than all is child)
-            if (comparator.compare(heap.get(idx), heap.get(smaller_child_idx)) < 0) {
+            if (comparator.compare(heap.get(idx), heap.get(smaller_child_idx)) <= 0) {
                 break;
             }
 
@@ -64,7 +65,8 @@ class BinaryHeap<T> {
         int i = heap.size();
         heap.add(element);
 
-        while (i != 0 && comparator.compare(heap.get(i), heap.get(parent(i))) < 0) {
+        while (i != 0 &&
+                comparator.compare(heap.get(i), heap.get(parent(i))) < 0) {
             swap(i, parent(i));
             i = parent(i);
         }
@@ -83,6 +85,10 @@ class BinaryHeap<T> {
 
     // Get the Parent index for the given index
     private int parent(int key) {
+        // assert(key <= 1);
+        if (key < 1) {
+            throw new Error("Aie");
+        }
         return (key - 1) / 2;
     }
 

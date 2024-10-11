@@ -86,31 +86,20 @@ class Date implements Comparable<Date> {
             throw new NullPointerException();
         }
 
-        if (this.getYear() != other.getYear()) {
-            return Integer.compare(this.getYear(), other.getYear());
+        if (this.year != other.year) {
+            return Integer.compare(this.year, other.year);
         }
 
-        if (this.getMonth() != other.getMonth()) {
-            return Integer.compare(this.getMonth(), other.getMonth());
+        if (this.month != other.month) {
+            return Integer.compare(this.month, other.month);
         }
 
-        return Integer.compare(this.getDay(), other.getDay());
-    }
-
-    public int getDay() {
-        return this.day;
-    }
-
-    public int getMonth() {
-        return this.month;
-    }
-
-    public int getYear() {
-        return this.year;
+        return Integer.compare(this.day, other.day);
     }
 
     private static int daysInMonth(int month, int year) {
-        if (month == 2 && isLeapYear(year)) {
+        if (month == 2 &&
+         isLeapYear(year)) {
             return 29;
         }
         return daysInMonths[month];

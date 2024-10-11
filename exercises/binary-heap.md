@@ -41,7 +41,7 @@ Use the project in [tp3-heap](../code/tp3-heap) to complete this exercise.
 
 ## Answer
 
-1. 
+# Question 1 
 
 Most method (pop,peek,count) does not take any argument for them the input will be the state of the Heap before each call to them. push() will take the state of the tree and it's input as inputs. 
 
@@ -61,14 +61,82 @@ From **Input Space Partitioning** design, I would write the following test:
 - testPopWhenEmpty()
 - testPopWhenNonEmpty()
 
-2. 
+# Question 2
 
 Code Coverage is 100%
 
-3. 
+# Question 3
 
 I have no predicate with more than one boolean check.
 
-4.
+# Question 4
 
+I got 3 mutant that survived, all of them of equivalent mutant. s
+
+## Mutant 1
+
+### Original Code
+
+```java
+if (right_child_idx < heap.size() &&
+        comparator.compare(heap.get(left_child_idx), heap.get(right_child_idx)) > 0) {
+    smaller_child_idx = right_child_idx;
+}
+```
+
+### Mutant Code
+
+```java
+if (right_child_idx < heap.size() &&
+        comparator.compare(heap.get(left_child_idx), heap.get(right_child_idx)) >=s 0) {
+    smaller_child_idx = right_child_idx;
+}
+```
+
+This mutant is equivalent to the Original Code since if they are equal there is no smaller child so any of them can be the smaller child.
+
+## Mutant 2
+
+### Original Code
+
+```java
+// Check if heap fixed (when last moved value is smaller than all is child)
+if (comparator.compare(heap.get(idx), heap.get(smaller_child_idx)) <= 0) {
+    break;
+}
+```
+
+### Mutant Code
+
+```java
+// Check if heap fixed (when last moved value is smaller than all is child)
+if (comparator.compare(heap.get(idx), heap.get(smaller_child_idx)) < 0) {
+    break;
+}
+```
+
+This Mutant is equivalent. It just swap them one more time. We are lousing some performance on the mutant case. 
+
+## Mutant 3
+
+### Original Code 
+
+```java
+while (i != 0 &&
+        comparator.compare(heap.get(i), heap.get(parent(i))) < 0) {
+    swap(i, parent(i));
+    i = parent(i);
+}
+```
+
+### Mutant Code
+
+```java
+while (comparator.compare(heap.get(i), heap.get(parent(i))) <= 0) {
+    swap(i, parent(i));
+    i = parent(i);
+}
+```
+
+This mutant is also equivalent. The mutant is just less efficient since it is doing a useless swap.
 

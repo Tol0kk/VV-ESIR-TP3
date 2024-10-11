@@ -53,14 +53,7 @@ Use the project in [tp3-date](../code/tp3-date) to complete this exercise.
 
 ## Answer
 
-**TODO** can we change the interface (add getters) ??
-
-**TODO** do we need to take care of negative year ??
-
-**TODO** Base Choice Coverage ??
-
-
-1. 
+# Question 1
 
 ## isValidDate(int day, int month, int year)
 Characteristics:
@@ -114,11 +107,11 @@ Block:
     - previousDate vs current date
     - nextDate vs current date
 
-# Common Characteristics
+## Common Characteristics
 
 A lots of method need to know how many days there is in a mouth depending on the month and the year. 
 
-2. 
+# Question 2
 
     Forgot to do test the method that could throw
 
@@ -128,13 +121,29 @@ A lots of method need to know how many days there is in a mouth depending on the
 
     Now 100% Code Coverage
 
-3.
+# Question 3
 
-**TODO**
+I got one case with two boolean operators check in `daysInMonth()`. 
 
-4.
+```java
+if (month == 2 &&
+         isLeapYear(year)) {
+            return 29;
+        }
+```
 
-90% killed
+There is 3 case possible:
+- month == 2: false
+- month == 2: true & isLeapYear(): true
+- month == 2: true & isLeapYear(): false
+
+`daysInMonth()` is private we cannot test it directly in Java. We need to test it indirectly thought each of it's caller (`nextDate()`,`previousDate()`,`isValidDate()`). I will only test it indirectly thought `isValidDate()` since `daysInMonth()` is easy accessible through it.
+
+I added `testIsValidDateDaysInMonth()`.
+
+# Question 4
+
+First run 90% mutant killed.
 
 Add test for:
 - getters
@@ -142,4 +151,4 @@ Add test for:
 - NextDate() (Transition month 11 to 12)
 - PreviousDate() (Transition Day 2 to 1)
 
-100% killed
+Last run 100% mutant killed

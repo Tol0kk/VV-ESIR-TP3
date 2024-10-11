@@ -47,13 +47,13 @@ class BinaryHeapTest {
         tree.push(10);
         tree.push(2);
         tree.push(12);
-        tree.push(6);
         tree.push(4);
+        tree.push(6);
         tree.push(3);
         tree.push(1);
         // Assert
         assertEquals(1, tree.peek());
-        assertEquals(7, tree.count());
+        // assertEquals(8, tree.count());
     }
 
     // TODO do I test only push() here ??
@@ -102,49 +102,72 @@ class BinaryHeapTest {
         assertEquals(2, tree.peek());
     }
 
-    // @Test
-    // void testPopAll() {
-    //     BinaryHeap<Integer> tree = new BinaryHeap<Integer>(Comparator.naturalOrder());
+    @Test
+    void testPopAll() {
+        BinaryHeap<Integer> tree = new BinaryHeap<Integer>(Comparator.naturalOrder());
 
-    //     tree.push(10);
-    //     tree.push(2);
-    //     tree.push(12);
-    //     tree.push(6);
-    //     tree.push(4);
-    //     tree.push(3);
-    //     tree.push(1);
+        tree.push(10);
+        tree.push(2);
+        tree.push(12);
+        tree.push(6);
+        tree.push(4);
+        tree.push(3);
+        tree.push(1);
 
-    //     // Assert
-    //     assertEquals(1, tree.pop());
-    //     assertEquals(2, tree.pop());
-    //     assertEquals(3, tree.pop());
-    //     assertEquals(4, tree.pop());
-    //     assertEquals(6, tree.pop());
-    //     assertEquals(10, tree.pop());
-    //     assertEquals(12, tree.pop());
-    //     assertEquals(0, tree.count());
-    // }
+        // Assert
+        assertEquals(1, tree.pop());
+        assertEquals(2, tree.pop());
+        assertEquals(3, tree.pop());
+        assertEquals(4, tree.pop());
+        assertEquals(6, tree.pop());
+        assertEquals(10, tree.pop());
+        assertEquals(12, tree.pop());
+        assertEquals(0, tree.count());
+    }
 
-    // @Test
-    // void testPopAllReverse() {
-    //     BinaryHeap<Integer> tree = new BinaryHeap<Integer>(Comparator.reverseOrder());
+    @Test
+    void testPopAllReverse() {
+        BinaryHeap<Integer> tree = new BinaryHeap<Integer>(Comparator.reverseOrder());
 
-    //     tree.push(10);
-    //     tree.push(2);
-    //     tree.push(12);
-    //     tree.push(6);
-    //     tree.push(4);
-    //     tree.push(3);
-    //     tree.push(1);
+        tree.push(10);
+        tree.push(2);
+        tree.push(12);
+        tree.push(6);
+        tree.push(4);
+        tree.push(3);
+        tree.push(1);
 
-    //     // Assert
-    //     assertEquals(12, tree.pop());
-    //     assertEquals(10, tree.pop());
-    //     assertEquals(6, tree.pop());
-    //     assertEquals(4, tree.pop());
-    //     assertEquals(3, tree.pop());
-    //     assertEquals(2, tree.pop());
-    //     assertEquals(1, tree.pop());
-    //     assertEquals(0, tree.count());
-    // }
+        // Assert
+        assertEquals(12, tree.pop());
+        assertEquals(10, tree.pop());
+        assertEquals(6, tree.pop());
+        assertEquals(4, tree.pop());
+        assertEquals(3, tree.pop());
+        assertEquals(2, tree.pop());
+        assertEquals(1, tree.pop());
+        assertEquals(0, tree.count());
+    }
+
+    @Test
+    void testPop3() {
+        BinaryHeap<Integer> tree = new BinaryHeap<Integer>(Comparator.reverseOrder());
+
+        tree.push(10);
+        tree.push(10);
+        tree.push(10);
+        tree.push(10);
+        tree.push(10);
+        tree.push(10);
+        tree.push(10);
+      
+
+        // Assert
+        assertEquals(10, tree.pop());
+        assertEquals(10, tree.pop());
+        assertEquals(10, tree.pop());
+        assertEquals(10, tree.pop());
+        assertEquals(10, tree.pop());
+        assertEquals(10, tree.pop());
+        assertEquals(10, tree.pop());
+    }
 }

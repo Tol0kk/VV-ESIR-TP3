@@ -43,6 +43,13 @@ class DateTest {
         assertFalse(Date.isValidDate(1, 0, 2023)); // No 0 month 
     }
 
+    @Test
+    void testIsValidDateDaysInMonth() {
+        assertTrue(Date.isValidDate(1, 1, 10)); // month != 2
+        assertTrue(Date.isValidDate(1, 2, 2020)); // month == 2 & isLeapYear()
+        assertTrue(Date.isValidDate(1, 2, 2021)); // month == 2 & !isLeapYear()
+    }
+
 
     // =============== //
     // Date()          //
@@ -52,19 +59,6 @@ class DateTest {
     void testDateThrow() {
         assertThrows(IllegalArgumentException.class,() -> new Date(0,0,0));
     }
-
-    // =============== //
-    // getters         //
-    // =============== //
-
-    @Test
-    void testGetters() {
-        Date d1 = new Date(31, 1, 2023);
-        assertTrue(d1.getDay() == 31);
-        assertTrue(d1.getMonth() == 1);
-        assertTrue(d1.getYear() == 2023);
-    }
-
 
     // =============== //
     // compareTo()     //

@@ -52,7 +52,6 @@ With these new tests, we have a code coverage of 94% and branch coverage of 96%.
 
 All the tests here reach all the logic of the algorithm. No need to add new tests. 
 
-
 4. Fourth question
 
 Using PIT, we found two mutations that survived the tests. All the others mutations where killed.
